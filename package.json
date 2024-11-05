@@ -1,0 +1,18 @@
+{
+  "name": "proyecto-fut-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Parte backend del proyecto de reserva de canchas sinteticas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}
