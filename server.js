@@ -2,17 +2,17 @@ import express from 'express';
 import cors from 'cors';
 import authRoutes from './auth.js';
 import registerRoutes from './register.js';
-import router from './auth.js';
-const app = express();
 
-// Rutas
-app.use(express.json());
-app.use('/login', authRoutes);
-app.use('/register', registerRoutes);
+const app = express();
 
 // cors
 app.use(cors());
-app.use('/api', router)
+app.use(express.json());
+
+// Rutas
+app.use('/api/login', authRoutes);
+app.use('/api/register', registerRoutes);
+
 
 // Iniciar servidor
 app.listen(3000, () => {

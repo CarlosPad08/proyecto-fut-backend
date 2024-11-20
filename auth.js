@@ -7,6 +7,7 @@ const router = express.Router();
 
 // Ruta para iniciar sesión
 router.post('/', async (req, res) => {
+    console.log('POST /api/login');
     const { email, password } = req.body;
     try {
         const result = await turso.execute('SELECT * FROM usuarios WHERE email = ?', [email]);
