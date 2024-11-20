@@ -11,13 +11,16 @@ router.post('/', async (req, res) => {
     try {
         const result = await turso.execute('SELECT * FROM usuarios WHERE email = ?', [email]);
         const rows = result.rows;
+
+        // Verificar si el usuario existe
         if (rows.length === 0) {
             return res.status(400).json({ success: false, message: 'Usuario no encontrado' });
         }
         const user = rows[0];
         const isPasswordValid = await bcrypt.compare(password, user.contraseña);
         //password == user.contraseña ? true : false
-        console.log(password, user.contraseña, isPasswordValid);
+
+        // Verificar si la contraseña es correcta
         if (!isPasswordValid) {
             return res.status(400).json({ success: false, message: 'Contraseña incorrecta' });
         }
