@@ -18,8 +18,10 @@ router.post('/', async (req, res) => {
         // Hashea la contraseña
         const hashedPassword = await bcrypt.hash(password, 10);
 
+        const telefonoInt = Math.floor(Number(telefono));
+
         // Insertar usuario en la base de datos
-        await turso.execute('INSERT INTO usuarios (nombre, telefono, email, contraseña) VALUES (?, ?, ?, ?)', [nombre, telefono, email, hashedPassword]);
+        await turso.execute('INSERT INTO usuarios (nombre, telefono, email, contraseña) VALUES (?, ?, ?, ?)', [nombre, telefonoInt, email, hashedPassword]);
 
         res.status(201).json({ success: true, message: 'Usuario registrado' });
     } catch (err) {
